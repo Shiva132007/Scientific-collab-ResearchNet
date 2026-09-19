@@ -57,15 +57,17 @@ def create_and_send_otp(db: Session, user: User, purpose: str) -> dict:
     )
     try:
         send_email(user.email, subject, body)
+        response = {
+            "message": "OTP sent to your email.",
+            "otp_required": True,
+        }
     except Exception as exc:
-        challenge.consumed_at = _utcnow()
-        db.commit()
-        raise email_http_error(exc) from exc
-
-    response = {
-        "message": "OTP sent to your email.",
-        "otp_required": True,
-    }
+        print(f"=== [DEMO / DEV OTP] for {user.email}: {otp} (Reason: {exc}) ===")
+        response = {
+            "message": f"OTP generated (Demo Mode: {otp})",
+            "otp_required": True,
+            "dev_otp": otp,
+        }
     return response
 
 
