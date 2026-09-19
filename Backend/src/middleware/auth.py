@@ -20,13 +20,24 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 # Tells FastAPI/Swagger "to get a token, POST to /users/login"
 # This is what makes the "Authorize" button in Swagger UI work automatically
 
-def hash_password(plain_password: str)-> bool:
-    return pwd_context.hash(plain_password)
-    # Calling this twice on the SAME password gives DIFFERENT output each time (random salt baked in)
+def _truncate_password(password: str) -> str:
+    if not password:
+        return ""
+    encoded = password.encode("utf-8")[:72]
+    return encoded.decode("utf-8", errors="ignore")
 
-def verify_password(plain_password:str, hashed_password: str)-> bool:
-    return pwd_context.verify(plain_password, hashed_password)
-    #Re-hashes plain_password using the same salt extracted from hashed_password,then compares strigns
+def hash_password(plain_password: str) -> str:
+    safe_pw = _truncate_password(plain_password)
+    return pwd_context.hash(safe_pw)
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    if not plain_password or not hashed_password:
+        return False
+    safe_pw = _truncate_password(plain_password)
+    try:
+        return pwd_context.verify(safe_pw, hashed_password)
+    except Exception:
+        return False
 
 def create_access_token(data: dict, expires_delta: timedelta | None=None):
     to_encode = data.copy()
