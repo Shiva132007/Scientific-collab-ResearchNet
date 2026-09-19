@@ -29,20 +29,24 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Scientific Collaboration Network Analyzer", lifespan=lifespan)
 
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
+origins = [origin.strip() for origin in allowed_origins_env.split(",")] if allowed_origins_env else [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
+    "http://localhost:5175",
+    "http://127.0.0.1:5175",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = [
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5174",
-        "http://localhost:5175",
-        "http://127.0.0.1:5175",
-    ],
-    allow_credentials = True,
-    allow_methods = ["*"],
+    allow_origins=origins if allowed_origins_env else ["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 app.include_router(users.router)
 app.include_router(researcher.router)
