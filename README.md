@@ -14,6 +14,12 @@
 
 ---
 
+### 🌐 Live Production Deployment
+- 🚀 **Backend REST API**: [https://scientific-collab-researchnet.onrender.com](https://scientific-collab-researchnet.onrender.com)
+- 📖 **Interactive Swagger API Docs**: [https://scientific-collab-researchnet.onrender.com/docs](https://scientific-collab-researchnet.onrender.com/docs)
+
+---
+
 ## 📌 Table of Contents
 
 - [Overview](#-overview)
