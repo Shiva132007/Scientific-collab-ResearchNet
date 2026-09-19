@@ -1,0 +1,26 @@
+@import "./auth.css";
+
+.login-container {
+  width: min(100%, 440px);
+  margin: 40px auto;
+}
+
+.login-container .dashboard-badge {
+  background: linear-gradient(135deg, var(--accent-bg), var(--warm-bg));
+  color: #1e3a8a;
+}
+
+.login-container form {
+  margin-top: 28px;
+  display: grid;
+  gap: 14px;
+}
+
+.login-container form p {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+}
+
+.login-container form a {
+  font-weight: 600;
+}

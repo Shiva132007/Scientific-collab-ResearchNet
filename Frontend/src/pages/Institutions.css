@@ -1,0 +1,263 @@
+.institutions-page {
+  width: 100%;
+  display: grid;
+  gap: 22px;
+}
+
+.institutions-header,
+.institution-form,
+.institution-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.institutions-header {
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.institutions-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), transparent 60%);
+  pointer-events: none;
+}
+
+.institutions-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.institutions-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 72ch;
+  line-height: 1.6;
+}
+
+.institution-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.institution-summary-card {
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.institution-summary-card span,
+.institution-details span,
+.institution-id {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.institution-summary-card strong {
+  color: var(--text-bright);
+  font-size: 1.75rem;
+  margin-top: 4px;
+}
+
+.institution-form {
+  padding: 26px;
+  display: grid;
+  gap: 14px;
+}
+
+.institution-form-header {
+  margin-bottom: 4px;
+}
+
+.institution-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.institution-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--text-bright);
+  font-size: 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.institution-input::placeholder {
+  color: var(--text-dim);
+}
+
+.institution-input:focus {
+  outline: none;
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 4px rgba(79, 127, 255, 0.12);
+}
+
+.institution-button,
+.institution-save-btn,
+.institution-edit-btn,
+.institution-cancel-btn,
+.institution-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.institution-button,
+.institution-save-btn {
+  width: fit-content;
+  background: var(--accent);
+  color: #fff;
+}
+
+.institution-button:hover,
+.institution-save-btn:hover {
+  background: var(--accent-hover);
+}
+
+.institution-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.institution-card {
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+  transition: border-color var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.institution-card:hover {
+  border-color: var(--border-2);
+  box-shadow: var(--shadow-lg);
+}
+
+.institution-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.institution-card-header h3 {
+  color: var(--text-h);
+  font-size: 1.2rem;
+  margin-top: 8px;
+}
+
+.institution-type {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px 8px;
+  border: 1px solid var(--success-border);
+  border-radius: 6px;
+  background: var(--success-bg);
+  color: var(--success);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.institution-details {
+  display: grid;
+  gap: 12px;
+}
+
+.institution-details p {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.institution-details strong,
+.institution-details a {
+  color: var(--text-h);
+  font-size: 0.92rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.institution-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.institution-edit-btn,
+.institution-cancel-btn {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+.institution-edit-btn:hover,
+.institution-cancel-btn:hover {
+  background: var(--accent-bg-hover);
+}
+
+.institution-delete-btn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+.institution-delete-btn:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.institution-edit-form,
+.institution-edit-fields {
+  display: grid;
+  gap: 14px;
+}
+
+@media (max-width: 720px) {
+  .institutions-header,
+  .institution-form,
+  .institution-card {
+    padding: 20px;
+  }
+
+  .institution-row {
+    grid-template-columns: 1fr;
+  }
+
+  .institution-card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

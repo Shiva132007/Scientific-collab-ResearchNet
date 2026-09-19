@@ -1,0 +1,28 @@
+@import "../styles/auth.css";
+
+.register-page .auth-layout {
+  grid-template-columns: 0.92fr 1.08fr;
+}
+
+.register-container {
+  width: 100%;
+}
+
+.register-container .dashboard-badge {
+  background: var(--accent-secondary-bg);
+  color: var(--accent-secondary);
+}
+
+.register-container .auth-kicker {
+  color: var(--accent-secondary);
+}
+
+.register-container form p {
+  margin: 8px 0 0;
+}
+
+@media (max-width: 960px) {
+  .register-page .auth-layout {
+    grid-template-columns: 1fr;
+  }
+}

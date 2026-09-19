@@ -1,0 +1,173 @@
+.conf-page {
+  display: grid;
+  gap: 20px;
+}
+
+.conf-header {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.conf-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+.conf-subtitle {
+  color: var(--text-muted);
+}
+
+.conf-form,
+.conf-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.conf-form-header {
+  margin-bottom: 18px;
+}
+
+.conf-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg, #fff);
+  color: var(--text-h);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.conf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.conf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.conf-button:hover {
+  background: var(--accent-hover);
+}
+
+.conf-list {
+  display: grid;
+  gap: 16px;
+}
+
+.conf-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+.conf-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.conf-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.conf-link:hover {
+  text-decoration: underline;
+}
+
+.conf-participations-section {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.conf-parts-list {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.conf-part-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-soft);
+  font-size: 0.85rem;
+}
+
+.conf-part-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conf-remove-part-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.conf-register-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.conf-register-input {
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.conf-register-btn {
+  background: var(--accent-secondary, #10b981);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.conf-delete-btn {
+  margin-top: 14px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.conf-delete-btn:hover {
+  background: #dc2626;
+}

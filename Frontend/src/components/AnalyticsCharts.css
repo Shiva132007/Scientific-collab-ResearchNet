@@ -1,0 +1,113 @@
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.analytics-card {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(79, 127, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.analytics-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.analytics-card-title {
+  font-family: var(--heading, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-bright, #f8fafc);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analytics-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(79, 127, 255, 0.15);
+  color: #4f7fff;
+  border: 1px solid rgba(79, 127, 255, 0.3);
+}
+
+.analytics-chart-box {
+  height: 220px;
+  width: 100%;
+  position: relative;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-bar {
+  transition: height 0.3s ease, y 0.3s ease, fill 0.2s ease;
+  cursor: pointer;
+}
+
+.chart-bar:hover {
+  fill: #7c3aed !important;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.6));
+}
+
+.chart-axis {
+  stroke: rgba(148, 163, 184, 0.2);
+  stroke-width: 1;
+}
+
+.chart-label {
+  font-size: 11px;
+  fill: #94a3b8;
+  font-weight: 600;
+}
+
+.chart-tooltip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #f8fafc;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.analytics-legend-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.analytics-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.analytics-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}

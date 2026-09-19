@@ -1,0 +1,137 @@
+.cite-page {
+  display: grid;
+  gap: 20px;
+}
+
+.cite-header {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.cite-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--text-h);
+}
+
+.cite-subtitle {
+  color: var(--text-muted);
+}
+
+.cite-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.8fr);
+  gap: 20px;
+}
+
+.cite-sidebar,
+.cite-detail-panel,
+.cite-form {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.cite-pub-item {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-soft);
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.cite-pub-item:hover,
+.cite-pub-item--selected {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.cite-pub-item h4 {
+  margin: 0 0 6px 0;
+  color: var(--text-h);
+}
+
+.cite-form {
+  margin-bottom: 20px;
+}
+
+.cite-form-header {
+  margin-bottom: 18px;
+}
+
+.cite-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg, #fff);
+  color: var(--text-h);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.cite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cite-button:hover {
+  background: var(--accent-hover);
+}
+
+.cite-lists-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cite-list-col {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--surface-soft);
+}
+
+.cite-link-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.cite-link-row:last-child {
+  border-bottom: none;
+}
+
+.cite-delete-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .cite-layout {
+    grid-template-columns: 1fr;
+  }
+}

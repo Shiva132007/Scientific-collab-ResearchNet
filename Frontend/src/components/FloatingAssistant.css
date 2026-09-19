@@ -1,0 +1,207 @@
+.floating-ai-trigger {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(112, 211, 255, 0.45);
+  background: radial-gradient(circle at 30% 25%, #8cf4ff 0%, #4f7fff 48%, #2343a2 100%);
+  box-shadow: 0 16px 34px rgba(5, 14, 40, 0.45);
+  color: #f8fcff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.floating-ai-trigger:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 38px rgba(5, 14, 40, 0.5);
+}
+
+.floating-ai-trigger--open {
+  transform: scale(0.94);
+}
+
+.floating-ai-trigger-icon {
+  font-size: 1.45rem;
+}
+
+.floating-ai-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 92px;
+  width: min(380px, calc(100vw - 28px));
+  max-height: min(640px, calc(100vh - 120px));
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.98);
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 1199;
+
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(9, 21, 38, 0.98) 0%, rgba(6, 14, 29, 0.98) 100%);
+  border: 1px solid rgba(112, 211, 255, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 22px 48px rgba(2, 7, 20, 0.62);
+  overflow: hidden;
+}
+
+.floating-ai-panel--open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.floating-ai-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid rgba(112, 211, 255, 0.2);
+}
+
+.floating-ai-header p {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #97b8d9;
+}
+
+.floating-ai-header h3 {
+  margin: 2px 0 0;
+  font-size: 1rem;
+  color: #eef5ff;
+}
+
+.floating-ai-header button {
+  background: transparent;
+  border: none;
+  color: #c8dbf1;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.floating-ai-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(112, 211, 255, 0.14);
+}
+
+.floating-ai-suggestions button {
+  border: 1px solid rgba(99, 163, 255, 0.4);
+  background: rgba(82, 135, 255, 0.12);
+  border-radius: 999px;
+  color: #d9e9ff;
+  font-size: 0.74rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.floating-ai-suggestions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.floating-ai-messages {
+  padding: 12px 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 200px;
+  max-height: 340px;
+}
+
+.floating-ai-message {
+  display: flex;
+}
+
+.floating-ai-message--user {
+  justify-content: flex-end;
+}
+
+.floating-ai-bubble {
+  max-width: 88%;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #eaf1fc;
+  background: rgba(22, 40, 67, 0.92);
+  border: 1px solid rgba(130, 173, 230, 0.28);
+  border-radius: 12px;
+  padding: 9px 11px;
+  white-space: pre-wrap;
+}
+
+.floating-ai-message--user .floating-ai-bubble {
+  background: linear-gradient(135deg, rgba(79, 127, 255, 0.35), rgba(56, 189, 248, 0.28));
+  border-color: rgba(112, 211, 255, 0.45);
+}
+
+.floating-ai-bubble--loading {
+  color: #9fbad6;
+  font-style: italic;
+}
+
+.floating-ai-error {
+  margin: 0;
+  padding: 0 14px 10px;
+  color: #fda4af;
+  font-size: 0.78rem;
+}
+
+.floating-ai-composer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(112, 211, 255, 0.14);
+}
+
+.floating-ai-composer textarea {
+  border: 1px solid rgba(117, 160, 220, 0.35);
+  border-radius: 10px;
+  background: rgba(12, 27, 49, 0.88);
+  color: #e8f2ff;
+  padding: 9px 10px;
+  resize: vertical;
+  min-height: 64px;
+}
+
+.floating-ai-composer button {
+  align-self: flex-end;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #5f94ff 0%, #3ec8f5 100%);
+  color: #081124;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.floating-ai-composer button:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+  .floating-ai-trigger {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .floating-ai-panel {
+    right: 12px;
+    bottom: 82px;
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 106px);
+  }
+}
