@@ -31,6 +31,7 @@ app = FastAPI(title="Scientific Collaboration Network Analyzer", lifespan=lifesp
 
 allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
 origins = [origin.strip() for origin in allowed_origins_env.split(",")] if allowed_origins_env else [
+    "https://collab-researchnet.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://localhost:5174",

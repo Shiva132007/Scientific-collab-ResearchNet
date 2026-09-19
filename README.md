@@ -15,7 +15,8 @@
 ---
 
 ### 🌐 Live Production Deployment
-- 🚀 **Backend REST API**: [https://scientific-collab-researchnet.onrender.com](https://scientific-collab-researchnet.onrender.com)
+- 🎨 **Frontend Web App (Vercel)**: [https://collab-researchnet.vercel.app](https://collab-researchnet.vercel.app)
+- 🚀 **Backend REST API (Render)**: [https://scientific-collab-researchnet.onrender.com](https://scientific-collab-researchnet.onrender.com)
 - 📖 **Interactive Swagger API Docs**: [https://scientific-collab-researchnet.onrender.com/docs](https://scientific-collab-researchnet.onrender.com/docs)
 
 ---
