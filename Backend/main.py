@@ -5,11 +5,12 @@ from contextlib import asynccontextmanager
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(BASE_DIR, "src"))
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response, WebSocket, WebSocketDisconnect
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
-from fastapi import WebSocket, WebSocketDisconnect
+
 from routes import users, researcher, institution, department, publication, project, conference, collaboration, citation, audit, report, dashboard, notification, collaboration_request, search, ai
 from websocket_manager import manager
 import models
@@ -23,38 +24,45 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Database initialization log: {e}")
     yield
 
 
 app = FastAPI(title="Scientific Collaboration Network Analyzer", lifespan=lifespan)
 
-allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
-default_origins = [
-    "https://collab-researchnet.vercel.app",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:5174",
-    "http://127.0.0.1:5174",
-    "http://localhost:5175",
-    "http://127.0.0.1:5175",
-]
-
-if allowed_origins_env:
-    origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
-else:
-    origins = default_origins
+@app.middleware("http")
+async def custom_cors_middleware(request: Request, call_next):
+    origin = request.headers.get("origin")
+    
+    if request.method == "OPTIONS":
+        response = Response(status_code=204)
+    else:
+        try:
+            response = await call_next(request)
+        except Exception as exc:
+            response = JSONResponse(
+                status_code=500,
+                content={"detail": f"Internal Server Error: {str(exc)}"},
+            )
+            
+    if origin:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Credentials"] = "true"
+        response.headers["Access-Control-Allow-Methods"] = "*"
+        response.headers["Access-Control-Allow-Headers"] = "*"
+        
+    return response
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
 
 app.include_router(users.router)
 app.include_router(researcher.router)
@@ -88,4 +96,4 @@ async def websocket_endpoint(websocket: WebSocket, user_id: int):
 
 @app.get("/")
 def root():
-    return {"message" : "API running"}
+    return {"message": "API running"}
