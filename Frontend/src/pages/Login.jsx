@@ -27,6 +27,9 @@ export default function Login() {
             if (!otpSent) {
                 const response = await loginUser(form.email, form.password);
                 setOtpSent(true);
+                if (response.data?.dev_otp) {
+                    setOtp(response.data.dev_otp);
+                }
                 setMessage(response.data.message || "OTP sent to your email.");
                 return;
             }

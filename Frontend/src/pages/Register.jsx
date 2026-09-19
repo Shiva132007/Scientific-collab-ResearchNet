@@ -60,6 +60,9 @@ export default function Register() {
     setLoading(true);
     try {
       const response = await resendVerification(form.email);
+      if (response.data?.dev_otp) {
+        setOtp(response.data.dev_otp);
+      }
       setMessage(response.data.message || "Verification OTP resent.");
     } catch (err) {
       const detail = err.response?.data?.detail;
