@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Scientific Collaboration Network Analyzer", lifespan=lifespan)
 
 allowed_origins_env = os.getenv("ALLOWED_ORIGINS")
-origins = [origin.strip() for origin in allowed_origins_env.split(",")] if allowed_origins_env else [
+default_origins = [
     "https://collab-researchnet.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
@@ -40,13 +40,20 @@ origins = [origin.strip() for origin in allowed_origins_env.split(",")] if allow
     "http://127.0.0.1:5175",
 ]
 
+if allowed_origins_env:
+    origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+else:
+    origins = default_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins if allowed_origins_env else ["*"],
+    allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 app.include_router(users.router)
