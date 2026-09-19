@@ -20,26 +20,29 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="users/login")
 # Tells FastAPI/Swagger "to get a token, POST to /users/login"
 # This is what makes the "Authorize" button in Swagger UI work automatically
 
+import bcrypt
+
 def hash_password(plain_password: str) -> str:
     if not plain_password:
         plain_password = ""
-    safe_pw = plain_password[:70]
-    try:
-        return pwd_context.hash(safe_pw)
-    except ValueError:
-        return pwd_context.hash(safe_pw.encode("utf-8")[:70].decode("utf-8", errors="ignore"))
+    pw_bytes = plain_password.encode("utf-8")[:72]
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(pw_bytes, salt).decode("utf-8")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     if not plain_password or not hashed_password:
         return False
-    safe_pw = plain_password[:70]
     try:
-        return pwd_context.verify(safe_pw, hashed_password)
+        pw_bytes = plain_password.encode("utf-8")[:72]
+        hashed_bytes = hashed_password.encode("utf-8")
+        if bcrypt.checkpw(pw_bytes, hashed_bytes):
+            return True
     except Exception:
-        try:
-            return pwd_context.verify(safe_pw.encode("utf-8")[:70].decode("utf-8", errors="ignore"), hashed_password)
-        except Exception:
-            return False
+        pass
+    try:
+        return pwd_context.verify(plain_password[:70], hashed_password)
+    except Exception:
+        return False
 
 def create_access_token(data: dict, expires_delta: timedelta | None=None):
     to_encode = data.copy()
